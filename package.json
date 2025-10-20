@@ -12,6 +12,7 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@ant-design/icons": "5.x",
     "@tailwindcss/vite": "^4.1.15",
     "axios": "^1.12.2",
     "react": "^19.1.1",

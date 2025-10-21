@@ -9,7 +9,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Header></Header>
-      <main className="flex justify-between px-24">
+      <main className="flex gap-5 px-24">
         <CoinList />
         <CoinDetails />
       </main>

@@ -9,14 +9,14 @@ const CoinList: FC = () => {
   const { data: coins = [] } = useQuery({
     queryKey: ['coins'],
     queryFn: getCoins,
-    staleTime: 5 * 1000,
+    staleTime: 1000 * 30,
     refetchOnWindowFocus: false,
     retry: 3,
   });
 
   return (
     <div
-      className="bg-[#193568] border-blue-500 border-2 rounded-xl max-w-[25%] max-h-190 overflow-y-auto"
+      className="bg-[#152b55] border-blue-500 border-2 rounded-xl max-w-[25%] min-w-[25%] max-h-190 overflow-y-auto"
       style={{
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',
@@ -24,6 +24,7 @@ const CoinList: FC = () => {
     >
       <ListHeader />
       {/* TODO: Добавить фильтрацию токенов по имени */}
+      {/* TODO: Добавить label для name токена и 24H изменения цены */}
       <div className="flex flex-col max-h-190 overflow-y-auto scrollbar-custom">
         {coins.map((coin) => (
           <CoinCard

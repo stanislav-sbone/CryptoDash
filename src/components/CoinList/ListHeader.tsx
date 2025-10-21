@@ -14,7 +14,7 @@ const ListHeader: FC = () => {
 
   return (
     <div className="flex justify-between items-center text-2xl px-5 py-3 pt-4 border-b border-b-blue-500">
-      <h2>Активы</h2>
+      <h2 className="text-gray-300">Активы</h2>
       <button
         className="text-[18px] text-gray-300 cursor-pointer"
         onClick={() => handleClick()}

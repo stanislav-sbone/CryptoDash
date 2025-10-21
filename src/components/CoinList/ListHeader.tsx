@@ -1,17 +1,15 @@
 import { useState, type FC } from 'react';
 import { RedoOutlined, LoadingOutlined } from '@ant-design/icons';
+import { useQueryClient } from '@tanstack/react-query';
 
 const ListHeader: FC = () => {
-  // TODO: интегрировать TanStack и заменить состояние load на состояния из TanStack
-  const [load, setLoad] = useState(false);
+  const queryClient = useQueryClient();
+  const [delay, setDelay] = useState(false);
 
   const handleClick = () => {
-    if (!load) {
-      setLoad(true);
-      setTimeout(() => {
-        setLoad(false);
-      }, 3000);
-    }
+    setDelay(true);
+    queryClient.invalidateQueries({ queryKey: ['coins'] });
+    setTimeout(() => setDelay(false), 1000);
   };
 
   return (
@@ -20,8 +18,9 @@ const ListHeader: FC = () => {
       <button
         className="text-[18px] text-gray-300 cursor-pointer"
         onClick={() => handleClick()}
+        disabled={delay}
       >
-        {load ? <LoadingOutlined /> : <RedoOutlined />}
+        {delay ? <LoadingOutlined /> : <RedoOutlined />}
       </button>
     </div>
   );

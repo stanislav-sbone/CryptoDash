@@ -15,6 +15,7 @@
 - **Tailwind CSS**
 - **Axios**
 - **Zustand**
+- **TanStack Query**
 - **Husky** + **Lint-staged** для pre-commit проверки кода
 
 ## 🛠 Установка и запуск

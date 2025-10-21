@@ -19,7 +19,7 @@ const CoinCard: FC<ICoin> = ({
     >
       <img src={image} alt={symbol} className="w-12" />
       <div>
-        <h3 className="text-[20px] tracking-wider">
+        <h3 className="text-[16px] tracking-wider">
           {name}{' '}
           <span className="text-gray-400 tracking-tight">
             {symbol.toUpperCase()}
@@ -30,10 +30,12 @@ const CoinCard: FC<ICoin> = ({
       <div className="ml-auto">
         {price_change_24h > 0 ? (
           <span className="text-green-600">
-            +{price_change_24h.toFixed(2)} $
+            +{price_change_24h.toFixed(4)} $
           </span>
         ) : (
-          <span className="text-red-600">{price_change_24h} $</span>
+          <span className="text-red-600">
+            {price_change_24h !== null ? price_change_24h.toFixed(4) : 0} $
+          </span>
         )}
       </div>
     </div>

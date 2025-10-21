@@ -1,16 +1,8 @@
 import type { FC } from 'react';
 import { useCoinStore } from '../../store/useCoinStore';
+import type { ICoin } from '../../types/coin';
 
-interface IProps {
-  id: string;
-  name: string;
-  symbol: string;
-  image: string;
-  current_price: number;
-  price_change_24h: number;
-}
-
-const CoinCard: FC<IProps> = ({
+const CoinCard: FC<ICoin> = ({
   id,
   image,
   name,

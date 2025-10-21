@@ -24,7 +24,7 @@ const CoinList: FC = () => {
     >
       <ListHeader />
       {/* TODO: Добавить фильтрацию токенов по имени */}
-      <div className="flex flex-col">
+      <div className="flex flex-col max-h-190 overflow-y-auto scrollbar-custom">
         {coins.map((coin) => (
           <CoinCard
             key={coin.id}

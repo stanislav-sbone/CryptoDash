@@ -14,6 +14,7 @@
 - **React**
 - **Tailwind CSS**
 - **Axios**
+- **Zustand**
 - **Husky** + **Lint-staged** для pre-commit проверки кода
 
 ## 🛠 Установка и запуск

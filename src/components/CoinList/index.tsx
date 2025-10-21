@@ -17,6 +17,8 @@ const CoinList: FC = () => {
       <div className="flex flex-col">
         {MOCK.map((coin) => (
           <CoinCard
+            key={coin.id}
+            id={coin.id}
             image={coin.image}
             name={coin.name}
             symbol={coin.symbol}

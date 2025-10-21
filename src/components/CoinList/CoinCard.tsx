@@ -1,6 +1,8 @@
 import type { FC } from 'react';
+import { useCoinStore } from '../../store/useCoinStore';
 
 interface IProps {
+  id: string;
   name: string;
   symbol: string;
   image: string;
@@ -9,14 +11,20 @@ interface IProps {
 }
 
 const CoinCard: FC<IProps> = ({
+  id,
   image,
   name,
   symbol,
   current_price,
   price_change_24h,
 }) => {
+  const setCoin = useCoinStore((state) => state.setCoinID);
+
   return (
-    <div className="flex items-center gap-5 px-4 py-3 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-[#27509c]">
+    <div
+      className="flex items-center gap-5 px-4 py-3 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-[#27509c]"
+      onClick={() => setCoin(id)}
+    >
       <img src={image} alt={symbol} className="w-12" />
       <div>
         <h3 className="text-[20px] tracking-wider">

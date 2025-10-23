@@ -39,7 +39,7 @@ const CoinList: FC = () => {
       <CoinFilter />
       {filteredCoins.length > 0 && <ListLabel />}
 
-      <div className="flex flex-col max-h-158 overflow-y-auto scrollbar-custom">
+      <div className="flex flex-col max-h-150 overflow-y-auto scrollbar-custom">
         {filteredCoins.length > 0 ? (
           filteredCoins.map((coin) => (
             <CoinCard

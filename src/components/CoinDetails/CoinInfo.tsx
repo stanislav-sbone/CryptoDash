@@ -45,7 +45,7 @@ const CoinInfo: FC<IProps> = ({
       <div className="mb-2">
         <h4 className="text-[20px] mb-2 text-gray-300">Изменение в цене</h4>
         {gapsData.map((gap) => (
-          <ChangeGap label={gap.label} value={gap.value} />
+          <ChangeGap key={gap.label} label={gap.label} value={gap.value} />
         ))}
       </div>
       <div className="mb-2">

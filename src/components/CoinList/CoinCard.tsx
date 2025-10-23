@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useCoinStore } from '../../store/useCoinStore';
 import type { ICoin } from '../../types/coin';
-import { formatNumber } from '../../utils/formatNumber';
+import { formatNumber, formatPriceChange } from '../../utils/formatNumber';
 
 const CoinCard: FC<ICoin> = ({
   id,
@@ -29,18 +29,12 @@ const CoinCard: FC<ICoin> = ({
         <p>${formatNumber(current_price.toFixed(2))}</p>
       </div>
       <div className="ml-auto">
-        {price_change_24h > 0 ? (
-          <span className="text-green-600">
-            +{formatNumber(price_change_24h.toFixed(4))}$
-          </span>
-        ) : (
-          <span className="text-red-600">
-            {price_change_24h !== null
-              ? formatNumber(price_change_24h.toFixed(4))
-              : 0}
-            $
-          </span>
-        )}
+        <span
+          className={price_change_24h > 0 ? 'text-green-600' : 'text-red-600'}
+        >
+          {price_change_24h > 0 && '+'}
+          {formatPriceChange(price_change_24h)}$
+        </span>
       </div>
     </div>
   );

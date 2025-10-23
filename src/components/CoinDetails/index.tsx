@@ -70,7 +70,11 @@ const CoinDetails: FC = () => {
       </div>
       <div className="grid grid-cols-[200px_260px_350px_400px] gap-3">
         {coinData.map((data) => (
-          <DetailBottom label={data.label} value={data.value} />
+          <DetailBottom
+            key={data.label}
+            label={data.label}
+            value={data.value}
+          />
         ))}
       </div>
     </div>

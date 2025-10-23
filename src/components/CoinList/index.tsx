@@ -6,6 +6,7 @@ import { getCoins } from '../../services/coingecko';
 import { useFilterStore } from '../../store/useFilterStore';
 import CoinFilter from './CoinFilter';
 import NotFound from './NotFound';
+import ListLabel from './ListLabel';
 
 const CoinList: FC = () => {
   const filter = useFilterStore((state) => state.filter);
@@ -36,7 +37,8 @@ const CoinList: FC = () => {
     >
       <ListHeader />
       <CoinFilter />
-      {/* TODO: Добавить label для name токена и 24H изменения цены */}
+      {filteredCoins.length > 0 && <ListLabel />}
+
       <div className="flex flex-col max-h-158 overflow-y-auto scrollbar-custom">
         {filteredCoins.length > 0 ? (
           filteredCoins.map((coin) => (

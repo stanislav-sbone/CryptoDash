@@ -8,9 +8,12 @@ import type { CoinDetail } from '../../types/coin';
 import CoinInfo from './CoinInfo';
 import DetailBottom from './DetailBottom';
 import { formatNumber } from '../../utils/formatNumber';
+import { useLanguageStore } from '../../store/useLanguageStore';
+import { translations } from '../../locales/translations';
 
 const CoinDetails: FC = () => {
   const coinID = useCoinStore((state) => state.coinID);
+  const language = useLanguageStore((state) => state.language);
 
   // TODO: добавить использование isLoading, isFetching и isError
   const { data: coin } = useQuery<CoinDetail>({
@@ -23,19 +26,19 @@ const CoinDetails: FC = () => {
 
   const coinData = [
     {
-      label: 'Капитализация',
+      label: translations[language].cap,
       value: `$${formatNumber(coin?.market_cap || 0)}`,
     },
     {
-      label: 'Общее предложение',
-      value: `${formatNumber(coin?.total_supply.toFixed(2) || 0)} токенов`,
+      label: translations[language].supply,
+      value: `${formatNumber(coin?.total_supply.toFixed(2) || 0)} ${translations[language].coins}`,
     },
     {
-      label: 'Максимальное предложение',
-      value: `${coin?.max_supply === null ? 'Неограничено' : `${formatNumber(coin?.max_supply || 0)} токенов`}`,
+      label: translations[language].maxSupply,
+      value: `${coin?.max_supply === null ? translations[language].limitless : `${formatNumber(coin?.max_supply || 0)} ${translations[language].coins}`}`,
     },
     {
-      label: 'Максимальная цена за всё время',
+      label: translations[language].ath,
       value: `$${formatNumber(coin?.ath || 0)}`,
     },
   ];

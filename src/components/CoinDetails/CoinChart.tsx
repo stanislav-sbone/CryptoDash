@@ -13,6 +13,8 @@ import {
 import { useQuery } from '@tanstack/react-query';
 import { useCoinStore } from '../../store/useCoinStore';
 import { getCoinChart } from '../../services/coingecko';
+import { translations } from '../../locales/translations';
+import { useLanguageStore } from '../../store/useLanguageStore';
 
 ChartJS.register(
   LineElement,
@@ -25,6 +27,7 @@ ChartJS.register(
 
 const CoinChart: FC = () => {
   const coinID = useCoinStore((state) => state.coinID);
+  const language = useLanguageStore((state) => state.language);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['coin-chart', coinID],
@@ -82,7 +85,7 @@ const CoinChart: FC = () => {
   return (
     <div className="min-w-[950px] min-h-[500px] bg-[#0d2246] p-4 border-blue-900 border-2 rounded-xl">
       <h3 className="text-[20px] mb-3 text-gray-300">
-        График изменения цены за 7 дней
+        {translations[language].chart7d}
       </h3>
       <Line data={chartData} options={options} />
     </div>

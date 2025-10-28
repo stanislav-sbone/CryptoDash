@@ -22,6 +22,8 @@ export const translations = {
     '60d': 'за 60 дней',
     '200d': 'за 200 дней',
     '1y': 'за 1 год',
+    language: 'Русский',
+    flag: '🇷🇺',
   },
   en: {
     assets: 'Assets',
@@ -46,5 +48,7 @@ export const translations = {
     '60d': '60d %',
     '200d': '200d %',
     '1y': '1y %',
+    language: 'English',
+    flag: '🇺🇸',
   },
 };

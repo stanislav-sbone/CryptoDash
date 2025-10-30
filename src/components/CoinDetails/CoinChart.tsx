@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type FC } from 'react';
+import { useMemo, type FC } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -42,6 +42,54 @@ const CoinChart: FC = () => {
     refetchOnWindowFocus: false,
   });
 
+  const chartData = useMemo(
+    () => ({
+      labels: data?.times ?? [],
+      datasets: [
+        {
+          label: `${coinID.toUpperCase()} Price (7d)`,
+          data: data?.prices ?? [],
+          borderColor: '#4ade80',
+          backgroundColor: '#4ade8025',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 0,
+        },
+      ],
+    }),
+    [data, coinID]
+  );
+
+  const options = useMemo(
+    () => ({
+      responsive: true,
+      plugins: {
+        tooltip: {
+          mode: 'index' as const,
+          intersect: false,
+          callbacks: {
+            label: (context: any) => `$${context.parsed.y.toFixed(2)}`,
+          },
+        },
+        legend: { display: false },
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: theme === 'dark' ? '#94a3b8' : 'black' },
+        },
+        y: {
+          grid: { color: theme === 'dark' ? 'gray' : 'black' },
+          ticks: {
+            color: theme === 'dark' ? '#94a3b8' : 'black',
+            callback: (value: any) => `$${value}`,
+          },
+        },
+      },
+    }),
+    [theme]
+  );
+
   if (isPending || isFetching)
     return (
       <div className={`${containerClass} flex justify-center items-center`}>
@@ -55,48 +103,6 @@ const CoinChart: FC = () => {
         <Error message={error.message} />
       </div>
     );
-
-  const chartData = {
-    labels: data.times,
-    datasets: [
-      {
-        label: `${coinID.toUpperCase()} Price (7d)`,
-        data: data.prices,
-        borderColor: '#4ade80',
-        backgroundColor: '#4ade8025',
-        fill: true,
-        tension: 0.3,
-        pointRadius: 0,
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      tooltip: {
-        mode: 'index' as const,
-        intersect: false,
-        callbacks: {
-          label: (context: any) => `$${context.parsed.y.toFixed(2)}`,
-        },
-      },
-      legend: { display: false },
-    },
-    scales: {
-      x: {
-        grid: { display: false },
-        ticks: { color: theme === 'dark' ? '#94a3b8' : 'black' },
-      },
-      y: {
-        grid: { color: theme === 'dark' ? 'gray' : 'black' },
-        ticks: {
-          color: theme === 'dark' ? '#94a3b8' : 'black',
-          callback: (value: any) => `$${value}`,
-        },
-      },
-    },
-  };
 
   return (
     <div className="min-w-[950px] min-h-[500px] bg-[#c6d6ff] dark:bg-[#0d2246] p-4 border-blue-500 dark:border-blue-900 border-2 rounded-xl">

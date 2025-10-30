@@ -18,7 +18,7 @@ const CoinCard: FC<ICoin> = ({
       className="flex items-center gap-5 font-medium px-4 py-3 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-500 dark:hover:bg-[#27509c]"
       onClick={() => setCoin(id)}
     >
-      <img src={image} alt={symbol} className="w-12" />
+      <img src={image} alt={symbol} className="w-12 h-12" />
       <div>
         <h3 className="text-[16px] tracking-wider text-black dark:text-white">
           <span>{name}</span>

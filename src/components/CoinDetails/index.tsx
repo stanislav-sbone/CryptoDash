@@ -71,7 +71,7 @@ const CoinDetails: FC = () => {
           low_24h={coin.low_24h}
         />
       </div>
-      <div className="w-full grid grid-cols-[1fr_2fr_3fr_3fr] gap-3">
+      <div className="w-full grid grid-cols-[2fr_2fr_3fr_3fr] gap-3">
         {coinData.map((data) => (
           <DetailBottom
             key={data.label}

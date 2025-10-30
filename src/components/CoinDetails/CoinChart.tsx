@@ -16,6 +16,8 @@ import { getCoinChart } from '../../services/coingecko';
 import { translations } from '../../locales/translations';
 import { useLanguageStore } from '../../store/useLanguageStore';
 import { useThemeStore } from '../../store/useThemeStore';
+import Loading from '../common/Loading';
+import Error from '../common/Error';
 
 ChartJS.register(
   LineElement,
@@ -27,20 +29,32 @@ ChartJS.register(
 );
 
 const CoinChart: FC = () => {
+  const containerClass =
+    'min-w-[950px] min-h-[500px] bg-[#c6d6ff] dark:bg-[#0d2246] p-4 border-blue-500 dark:border-blue-900 border-2 rounded-xl';
   const theme = useThemeStore((state) => state.theme);
   const coinID = useCoinStore((state) => state.coinID);
   const language = useLanguageStore((state) => state.language);
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isFetching, isPending, isError, error } = useQuery({
     queryKey: ['coin-chart', coinID],
     queryFn: () => getCoinChart(coinID),
     staleTime: 1000 * 30,
     refetchOnWindowFocus: false,
   });
 
-  if (isLoading) return <div>Loading chart...</div>;
-  if (isError) return <div>Error loading chart</div>;
-  if (!data) return null;
+  if (isPending || isFetching)
+    return (
+      <div className={`${containerClass} flex justify-center items-center`}>
+        <Loading />
+      </div>
+    );
+
+  if (isError)
+    return (
+      <div className={`${containerClass} flex justify-center items-center`}>
+        <Error message={error.message} />
+      </div>
+    );
 
   const chartData = {
     labels: data.times,

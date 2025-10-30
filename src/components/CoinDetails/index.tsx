@@ -10,8 +10,8 @@ import DetailBottom from './DetailBottom';
 import { formatNumber } from '../../utils/formatNumber';
 import { useLanguageStore } from '../../store/useLanguageStore';
 import { translations } from '../../locales/translations';
-import Error from '../Error';
-import Loading from './Loading';
+import Error from '../common/Error';
+import Loading from '../common/Loading';
 
 const CoinDetails: FC = () => {
   const containerClasses =

@@ -8,7 +8,7 @@ import CoinFilter from './CoinFilter';
 import NotFound from './NotFound';
 import ListLabel from './ListLabel';
 import CoinCardSkeleton from './CoinCardSkeleton';
-import Error from '../Error';
+import Error from '../common/Error';
 
 const CoinList: FC = () => {
   const containerClasses =

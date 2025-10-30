@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { useLanguageStore } from '../store/useLanguageStore';
-import { translations } from '../locales/translations';
+import { useLanguageStore } from '../../store/useLanguageStore';
+import { translations } from '../../locales/translations';
 
 interface IProps {
   message?: string;

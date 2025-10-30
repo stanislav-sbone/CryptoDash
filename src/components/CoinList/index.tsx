@@ -17,9 +17,10 @@ const CoinList: FC = () => {
   const filter = useFilterStore((state) => state.filter);
   const {
     data: coins = [],
-    isLoading,
     isPending,
+    isFetching,
     isError,
+    error,
   } = useQuery({
     queryKey: ['coins'],
     queryFn: getCoins,
@@ -36,7 +37,7 @@ const CoinList: FC = () => {
     [coins, filter]
   );
 
-  if (isLoading || isPending) {
+  if (isPending || isFetching) {
     return (
       <div
         className={containerClasses}
@@ -67,7 +68,7 @@ const CoinList: FC = () => {
         }}
       >
         <ListHeader />
-        <Error />
+        <Error message={error.message} />
       </div>
     );
   }

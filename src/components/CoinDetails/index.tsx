@@ -10,13 +10,22 @@ import DetailBottom from './DetailBottom';
 import { formatNumber } from '../../utils/formatNumber';
 import { useLanguageStore } from '../../store/useLanguageStore';
 import { translations } from '../../locales/translations';
+import Error from '../Error';
+import Loading from './Loading';
 
 const CoinDetails: FC = () => {
+  const containerClasses =
+    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 w-full max-h-190 min-h-190';
   const coinID = useCoinStore((state) => state.coinID);
   const language = useLanguageStore((state) => state.language);
 
-  // TODO: добавить использование isLoading, isFetching и isError
-  const { data: coin } = useQuery<CoinDetail>({
+  const {
+    data: coin,
+    isPending,
+    isFetching,
+    isError,
+    error,
+  } = useQuery<CoinDetail>({
     queryKey: ['coinDetails', coinID],
     queryFn: () => getCoinDetails(coinID),
     retry: 3,
@@ -43,12 +52,24 @@ const CoinDetails: FC = () => {
     },
   ];
 
-  if (!coin) {
-    return null;
+  if (isError) {
+    return (
+      <div className={containerClasses}>
+        <Error message={error.message} />
+      </div>
+    );
+  }
+
+  if (isPending || isFetching) {
+    return (
+      <div className={containerClasses}>
+        <Loading />
+      </div>
+    );
   }
 
   return (
-    <div className="bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 w-full">
+    <div className={containerClasses}>
       <CoinHeader
         key={coin.id}
         name={coin.name}
@@ -57,6 +78,7 @@ const CoinDetails: FC = () => {
         market_cap_rank={coin.market_cap_rank}
         price_change_percentage_24h={coin.price_change_percentage_24h}
       />
+
       <div className="flex gap-4 mb-4">
         <CoinChart />
         <CoinInfo
@@ -71,6 +93,7 @@ const CoinDetails: FC = () => {
           low_24h={coin.low_24h}
         />
       </div>
+
       <div className="w-full grid grid-cols-[2fr_2fr_3fr_3fr] gap-3">
         {coinData.map((data) => (
           <DetailBottom

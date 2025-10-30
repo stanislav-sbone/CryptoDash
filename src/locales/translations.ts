@@ -27,6 +27,7 @@ export const translations = {
     light: 'Светлая',
     dark: 'Тёмная',
     error: 'Ошибка загрузки данных',
+    loading: 'Загрузка данных...',
   },
   en: {
     assets: 'Assets',
@@ -56,5 +57,6 @@ export const translations = {
     light: 'Light',
     dark: 'Dark',
     error: 'Error loading data',
+    loading: 'Loading data...',
   },
 };

@@ -15,6 +15,7 @@ import { useCoinStore } from '../../store/useCoinStore';
 import { getCoinChart } from '../../services/coingecko';
 import { translations } from '../../locales/translations';
 import { useLanguageStore } from '../../store/useLanguageStore';
+import { useThemeStore } from '../../store/useThemeStore';
 
 ChartJS.register(
   LineElement,
@@ -26,6 +27,7 @@ ChartJS.register(
 );
 
 const CoinChart: FC = () => {
+  const theme = useThemeStore((state) => state.theme);
   const coinID = useCoinStore((state) => state.coinID);
   const language = useLanguageStore((state) => state.language);
 
@@ -47,7 +49,7 @@ const CoinChart: FC = () => {
         label: `${coinID.toUpperCase()} Price (7d)`,
         data: data.prices,
         borderColor: '#4ade80',
-        backgroundColor: 'rgba(74, 222, 128, 0.1)',
+        backgroundColor: '#4ade8025',
         fill: true,
         tension: 0.3,
         pointRadius: 0,
@@ -70,12 +72,12 @@ const CoinChart: FC = () => {
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: '#94a3b8' },
+        ticks: { color: theme === 'dark' ? '#94a3b8' : 'black' },
       },
       y: {
-        grid: { color: '#1e293b' },
+        grid: { color: theme === 'dark' ? 'gray' : 'black' },
         ticks: {
-          color: '#94a3b8',
+          color: theme === 'dark' ? '#94a3b8' : 'black',
           callback: (value: any) => `$${value}`,
         },
       },
@@ -83,8 +85,8 @@ const CoinChart: FC = () => {
   };
 
   return (
-    <div className="min-w-[950px] min-h-[500px] bg-[#0d2246] p-4 border-blue-900 border-2 rounded-xl">
-      <h3 className="text-[20px] mb-3 text-gray-300">
+    <div className="min-w-[950px] min-h-[500px] bg-[#c6d6ff] dark:bg-[#0d2246] p-4 border-blue-500 dark:border-blue-900 border-2 rounded-xl">
+      <h3 className="text-[20px] mb-3 text-black dark:text-gray-300 font-medium">
         {translations[language].chart7d}
       </h3>
       <Line data={chartData} options={options} />

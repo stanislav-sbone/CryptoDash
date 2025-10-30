@@ -56,17 +56,17 @@ const CoinInfo: FC<IProps> = ({
   ];
 
   return (
-    <div className="h-[535px] w-full bg-[#0d2246] p-4 border-blue-900 border-2 rounded-xl  transition-colors duration-300 ease-in-out hover:bg-[#1d3d75]">
+    <div className="h-[535px] w-full font-medium text-black bg-[#c6d6ff] dark:bg-[#0d2246] p-4 border-blue-500 dark:border-blue-900 border-2 rounded-xl">
       <div>
-        <h3 className="text-[20px] mb-2 text-gray-300">
+        <h3 className="text-[20px] mb-2 dark:text-gray-300">
           {translations[language].currentPrice}
         </h3>
-        <p className="text-[24px] font-bold mb-2">
+        <p className="text-[24px] font-bold mb-2 dark:text-white">
           ${formatNumber(current_price)}
         </p>
       </div>
       <div className="mb-2">
-        <h4 className="text-[20px] mb-2 text-gray-300">
+        <h4 className="text-[20px] mb-2 dark:text-gray-300">
           {translations[language].priceChange}
         </h4>
         {gapsData.map((gap) => (
@@ -74,16 +74,16 @@ const CoinInfo: FC<IProps> = ({
         ))}
       </div>
       <div className="mb-2">
-        <h4 className="text-[16px] mb-2 text-gray-300">
+        <h4 className="text-[16px] mb-2 dark:text-gray-300">
           {translations[language].max24h}
         </h4>
-        <p>${formatNumber(high_24h)}</p>
+        <p className="dark:text-white">${formatNumber(high_24h)}</p>
       </div>
       <div>
-        <h4 className="text-[16px] mb-2 text-gray-300">
+        <h4 className="text-[16px] mb-2 dark:text-gray-300">
           {translations[language].min24h}
         </h4>
-        <p>${formatNumber(low_24h)}</p>
+        <p className="dark:text-white">${formatNumber(low_24h)}</p>
       </div>
     </div>
   );

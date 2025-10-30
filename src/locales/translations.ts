@@ -24,6 +24,8 @@ export const translations = {
     '1y': 'за 1 год',
     language: 'Русский',
     flag: '🇷🇺',
+    light: 'Светлая',
+    dark: 'Тёмная',
   },
   en: {
     assets: 'Assets',
@@ -50,5 +52,7 @@ export const translations = {
     '1y': '1y %',
     language: 'English',
     flag: '🇺🇸',
+    light: 'Light',
+    dark: 'Dark',
   },
 };

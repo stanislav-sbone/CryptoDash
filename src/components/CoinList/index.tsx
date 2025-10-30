@@ -29,7 +29,7 @@ const CoinList: FC = () => {
 
   return (
     <div
-      className="bg-[#152b55] border-blue-500 border-2 rounded-xl max-w-[25%] min-w-[25%] max-h-190 min-h-190 overflow-y-auto"
+      className="bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl max-w-[25%] min-w-[25%] max-h-190 min-h-190 overflow-y-auto"
       style={{
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',

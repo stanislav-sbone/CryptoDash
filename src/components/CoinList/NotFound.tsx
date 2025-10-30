@@ -5,7 +5,7 @@ import { translations } from '../../locales/translations';
 const NotFound: FC = () => {
   const language = useLanguageStore((state) => state.language);
   return (
-    <div className="flex justify-center items-center h-20 text-gray-300 text-xl">
+    <div className="flex justify-center items-center h-20 text-black dark:text-gray-300 text-xl">
       {translations[language].notFound}
     </div>
   );

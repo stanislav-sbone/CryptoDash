@@ -50,27 +50,36 @@ const LanguageDropdown: FC = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#193568] hover:bg-[#2a6eee] transition-all duration-300 ease-in-out cursor-pointer"
+        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#2a6eee] hover:bg-[#193568] dark:bg-[#193568] dark:hover:bg-[#2a6eee] transition-all duration-300 ease-in-out cursor-pointer"
         onClick={() => setOpen(!open)}
       >
         {/* <span className="text-xl">{currentLanguage?.flag}</span> */}
-        <span>{currentLanguage?.name}</span>
+        <span className="font-medium">{currentLanguage?.name}</span>
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-1 w-40 bg-[#193568] rounded-lg border border-[#2a6eee] overflow-hidden animate-[slideDown_0.2s_ease-out]">
+        <div
+          className="absolute right-0 mt-1 w-40 
+                   bg-[#f3f6fc] dark:bg-[#193568] 
+                   border border-[#2a6eee] 
+                   rounded-lg overflow-hidden 
+                   animate-[slideDown_0.2s_ease-out]"
+        >
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageSelect(lang.code)}
-              className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-[#2a6eee] transition-colors duration-200 ${
-                language === lang.code ? 'bg-[#2a6eee]' : 'cursor-pointer'
-              }`}
+              className={`w-full flex items-center gap-3 px-4 py-3 
+                        text-black dark:text-white
+                        hover:bg-[#c2ceec] dark:hover:bg-[#2a6eee] 
+                        transition-colors duration-200
+                        ${language === lang.code ? 'bg-[#c2ceec] dark:bg-[#2a6eee]' : 'cursor-pointer'}`}
             >
-              {/* <span className="text-2xl">{lang.flag}</span> */}
-              <span>{lang.name}</span>
+              <span className="font-medium">{lang.name}</span>
               {language === lang.code && (
-                <span className="ml-auto text-blue-300">✓</span>
+                <span className="ml-auto text-[#2563eb] dark:text-blue-300">
+                  ✓
+                </span>
               )}
             </button>
           ))}

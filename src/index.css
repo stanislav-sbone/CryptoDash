@@ -1,23 +1,53 @@
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 body {
-  min-height: 100vh;
-  background: #0d1421;
   color: white;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
+}
+
+html.light body {
+  background: #ededed;
+}
+
+html.dark body {
+  background: #0d1421;
+}
+
+html,
+body {
+  transition:
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[class*='bg-'],
+[class*='text-'] {
+  transition:
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scrollbar-custom::-webkit-scrollbar {
   width: 8px;
 }
 
-.scrollbar-custom::-webkit-scrollbar-track {
+html.light .scrollbar-custom::-webkit-scrollbar-track {
+  background: #acb7d1;
+  border-radius: 8px;
+}
+
+html.light .scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #2196f3;
+  border-radius: 8px;
+  border: 2px solid #acb7d1;
+}
+
+html.dark .scrollbar-custom::-webkit-scrollbar-track {
   background: #193568;
   border-radius: 8px;
 }
 
-.scrollbar-custom::-webkit-scrollbar-thumb {
+html.dark .scrollbar-custom::-webkit-scrollbar-thumb {
   background-color: #2a6eee;
   border-radius: 8px;
   border: 2px solid #193568;

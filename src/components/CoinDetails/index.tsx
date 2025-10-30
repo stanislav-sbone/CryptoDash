@@ -48,7 +48,7 @@ const CoinDetails: FC = () => {
   }
 
   return (
-    <div className="bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 w-full">
+    <div className="bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 w-full">
       <CoinHeader
         key={coin.id}
         name={coin.name}
@@ -71,7 +71,7 @@ const CoinDetails: FC = () => {
           low_24h={coin.low_24h}
         />
       </div>
-      <div className="grid grid-cols-[200px_260px_350px_400px] gap-3">
+      <div className="w-full grid grid-cols-[1fr_2fr_3fr_3fr] gap-3">
         {coinData.map((data) => (
           <DetailBottom
             key={data.label}

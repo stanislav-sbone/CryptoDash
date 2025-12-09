@@ -19,7 +19,7 @@ const CoinHeader: FC<IProps> = ({
   const isLowerThanZero = price_change_percentage_24h <= 0;
 
   return (
-    <div className="flex items-center gap-2 py-4 px-4">
+    <div className="flex items-center justify-between md:justify-normal md:gap-2 py-4 lg:px-4">
       <div className="px-2 text-[18px] dark:text-[#a1a7bb] border border-[#a1a7bb] rounded-xl bg-gray-600">
         {`#${market_cap_rank}`}
       </div>

@@ -12,7 +12,7 @@ import Error from '../common/Error';
 
 const CoinList: FC = () => {
   const containerClasses =
-    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl max-w-[25%] min-w-[25%] max-h-190 min-h-190 overflow-y-auto';
+    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl w-full lg:max-w-[25%] lg:min-w-[25%] max-h-190 min-h-190 overflow-y-auto';
 
   const filter = useFilterStore((state) => state.filter);
   const {

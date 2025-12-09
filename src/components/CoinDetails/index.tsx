@@ -15,7 +15,7 @@ import Loading from '../common/Loading';
 
 const CoinDetails: FC = () => {
   const containerClasses =
-    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 w-full max-h-190 min-h-190';
+    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 w-full lg:max-h-190 lg:min-h-190';
   const coinID = useCoinStore((state) => state.coinID);
   const language = useLanguageStore((state) => state.language);
 
@@ -79,7 +79,7 @@ const CoinDetails: FC = () => {
         price_change_percentage_24h={coin.price_change_percentage_24h}
       />
 
-      <div className="flex gap-4 mb-4">
+      <div className="flex flex-col lg:flex-row gap-4 mb-3 lg:mb-4">
         <CoinChart />
         <CoinInfo
           current_price={coin.current_price}
@@ -94,7 +94,7 @@ const CoinDetails: FC = () => {
         />
       </div>
 
-      <div className="w-full grid grid-cols-[2fr_2fr_3fr_3fr] gap-3">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_2fr_3fr_3fr] gap-3 mb-3">
         {coinData.map((data) => (
           <DetailBottom
             key={data.label}

@@ -105,7 +105,7 @@ const CoinChart: FC = () => {
     );
 
   return (
-    <div className="min-w-[950px] min-h-[500px] bg-[#c6d6ff] dark:bg-[#0d2246] p-4 border-blue-500 dark:border-blue-900 border-2 rounded-xl">
+    <div className="lg:min-w-[950px] lg:min-h-[500px] bg-[#c6d6ff] dark:bg-[#0d2246] p-4 border-blue-500 dark:border-blue-900 border-2 rounded-xl">
       <h3 className="text-[20px] mb-3 text-black dark:text-gray-300 font-medium">
         {translations[language].chart7d}
       </h3>

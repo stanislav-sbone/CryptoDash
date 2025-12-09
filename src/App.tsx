@@ -8,8 +8,8 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Header></Header>
-      <main className="flex gap-5 px-24">
+      <Header />
+      <main className="flex flex-col lg:flex-row gap-5 px-3 2xl:px-24">
         <CoinList />
         <CoinDetails />
       </main>

@@ -12,7 +12,7 @@ import Error from '../common/Error';
 
 const CoinList: FC = () => {
   const containerClasses =
-    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl w-full lg:max-w-[25%] lg:min-w-[25%] max-h-190 min-h-190 overflow-y-auto';
+    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl w-full lg:max-w-[25%] lg:min-w-[25%] h-190 2xl:h-[85vh] overflow-y-auto';
 
   const filter = useFilterStore((state) => state.filter);
   const {
@@ -75,32 +75,36 @@ const CoinList: FC = () => {
 
   return (
     <div
-      className={containerClasses}
+      className={`${containerClasses} flex flex-col`}
       style={{
         msOverflowStyle: 'none' as const,
         scrollbarWidth: 'none' as const,
       }}
     >
-      <ListHeader />
-      <CoinFilter />
-      {filteredCoins.length > 0 && <ListLabel />}
+      <div className="shrink-0">
+        <ListHeader />
+        <CoinFilter />
+        {filteredCoins.length > 0 && <ListLabel />}
+      </div>
 
-      <div className="flex flex-col max-h-150 overflow-y-auto scrollbar-custom">
-        {filteredCoins.length > 0 ? (
-          filteredCoins.map((coin) => (
-            <CoinCard
-              key={coin.id}
-              id={coin.id}
-              image={coin.image}
-              name={coin.name}
-              symbol={coin.symbol}
-              current_price={coin.current_price}
-              price_change_24h={coin.price_change_24h}
-            />
-          ))
-        ) : (
-          <NotFound />
-        )}
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-custom">
+        <div className="flex flex-col">
+          {filteredCoins.length > 0 ? (
+            filteredCoins.map((coin) => (
+              <CoinCard
+                key={coin.id}
+                id={coin.id}
+                image={coin.image}
+                name={coin.name}
+                symbol={coin.symbol}
+                current_price={coin.current_price}
+                price_change_24h={coin.price_change_24h}
+              />
+            ))
+          ) : (
+            <NotFound />
+          )}
+        </div>
       </div>
     </div>
   );

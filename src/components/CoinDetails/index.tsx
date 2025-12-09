@@ -13,7 +13,7 @@ import { useCoinData } from '../../hooks/useCoinData';
 
 const CoinDetails: FC = () => {
   const containerClasses =
-    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 w-full lg:max-h-190 lg:min-h-190';
+    'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 pt-2 w-full lg:min-h-190 2xl:h-[85vh]';
   const coinID = useCoinStore((state) => state.coinID);
 
   const {
@@ -74,7 +74,7 @@ const CoinDetails: FC = () => {
         />
       </div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_2fr_3fr_3fr] gap-3 mb-3">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_2fr_3fr_3fr] 2xl:grid-cols-4 gap-3 2xl:gap-2 mb-3 lg:mb-0">
         {coinData.map((data) => (
           <DetailBottom
             key={data.label}

@@ -7,17 +7,14 @@ import { getCoinDetails } from '../../services/coingecko';
 import type { CoinDetail } from '../../types/coin';
 import CoinInfo from './CoinInfo';
 import DetailBottom from './DetailBottom';
-import { formatNumber } from '../../utils/formatNumber';
-import { useLanguageStore } from '../../store/useLanguageStore';
-import { translations } from '../../locales/translations';
 import Error from '../common/Error';
 import Loading from '../common/Loading';
+import { useCoinData } from '../../hooks/useCoinData';
 
 const CoinDetails: FC = () => {
   const containerClasses =
     'bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 w-full lg:max-h-190 lg:min-h-190';
   const coinID = useCoinStore((state) => state.coinID);
-  const language = useLanguageStore((state) => state.language);
 
   const {
     data: coin,
@@ -33,24 +30,7 @@ const CoinDetails: FC = () => {
     refetchOnWindowFocus: false,
   });
 
-  const coinData = [
-    {
-      label: translations[language].cap,
-      value: `$${formatNumber(coin?.market_cap || 0)}`,
-    },
-    {
-      label: translations[language].supply,
-      value: `${formatNumber(coin?.total_supply.toFixed(2) || 0)} ${translations[language].coins}`,
-    },
-    {
-      label: translations[language].maxSupply,
-      value: `${coin?.max_supply === null ? translations[language].limitless : `${formatNumber(coin?.max_supply || 0)} ${translations[language].coins}`}`,
-    },
-    {
-      label: translations[language].ath,
-      value: `$${formatNumber(coin?.ath || 0)}`,
-    },
-  ];
+  const coinData = useCoinData(coin);
 
   if (isError) {
     return (

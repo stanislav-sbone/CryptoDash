@@ -6,7 +6,7 @@ import { translations } from '../../locales/translations';
 const Loading: FC = () => {
   const language = useLanguageStore((state) => state.language);
   return (
-    <div className="flex flex-col gap-4 justify-center items-center h-full text-black dark:text-gray-300 font-medium text-2xl">
+    <div className="flex flex-col gap-4 justify-center items-center h-full text-black dark:text-gray-300 font-medium text-2xl py-15 lg:py-0">
       <Spin size="large" />
       <p>{translations[language].loading}</p>
     </div>

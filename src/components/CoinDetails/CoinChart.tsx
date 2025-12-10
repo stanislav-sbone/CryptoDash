@@ -30,7 +30,7 @@ ChartJS.register(
 
 const CoinChart: FC = () => {
   const containerClass =
-    'min-w-[950px] min-h-[500px] bg-[#c6d6ff] dark:bg-[#0d2246] p-4 border-blue-500 dark:border-blue-900 border-2 rounded-xl';
+    'lg:min-w-[950px] lg:min-h-[500px] bg-[#c6d6ff] dark:bg-[#0d2246] p-4 border-blue-500 dark:border-blue-900 border-2 rounded-xl';
   const theme = useThemeStore((state) => state.theme);
   const coinID = useCoinStore((state) => state.coinID);
   const language = useLanguageStore((state) => state.language);

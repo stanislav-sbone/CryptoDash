@@ -74,7 +74,7 @@ const CoinDetails: FC = () => {
         />
       </div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_2fr_3fr_3fr] 2xl:grid-cols-4 gap-3 2xl:gap-2 mb-3 lg:mb-0">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_2fr_3fr_3fr] gap-3 mb-3 lg:mb-0">
         {coinData.map((data) => (
           <DetailBottom
             key={data.label}

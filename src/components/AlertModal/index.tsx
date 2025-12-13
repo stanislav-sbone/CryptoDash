@@ -11,7 +11,7 @@ const AlertModal: FC = () => {
       onClick={() => closeAlertModal()}
     >
       <div
-        className="flex flex-col gap-4 bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 py-3 w-full md:w-3/4 lg:w-1/2 xl:w-1/3"
+        className="flex flex-col gap-4 bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 py-3 w-full md:w-3/4 lg:w-1/2 xl:w-1/3 animate-[slideDown_0.4s_ease-out]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between text-2xl md:text-3xl">

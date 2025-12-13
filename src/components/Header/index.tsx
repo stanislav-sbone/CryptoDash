@@ -3,7 +3,7 @@ import Logo from './Logo';
 import LanguageDropdown from './LanguageDropdown';
 import ThemeButton from './ThemeButton';
 import BurgerMenu from './BurgerMenu';
-import ApiInfoButton from './ApiInfoButton';
+import AlertModalButton from './AlertModalButton';
 
 const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +29,7 @@ const Header: FC = () => {
     >
       <Logo />
       <div className="hidden sm:flex sm:gap-4">
-        <ApiInfoButton />
+        <AlertModalButton />
         <LanguageDropdown />
         <ThemeButton />
       </div>

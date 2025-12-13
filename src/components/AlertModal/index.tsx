@@ -11,16 +11,16 @@ const AlertModal: FC = () => {
       onClick={() => closeAlertModal()}
     >
       <div
-        className="flex flex-col gap-4 bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 py-3 w-1/3"
+        className="flex flex-col gap-4 bg-[#c2ceec] dark:bg-[#152b55] border-blue-500 border-2 rounded-xl px-4 py-3 w-full md:w-3/4 lg:w-1/2 xl:w-1/3"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between text-3xl">
+        <div className="flex justify-between text-2xl md:text-3xl">
           <div className="flex items-center gap-4">
-            <img src="/assets/alert.png" alt="alert" className="w-12" />
+            <img src="/assets/alert.png" alt="alert" className="w-10 md:w-12" />
             <h3>Предупреждение</h3>
           </div>
           <button
-            className="cursor-pointer hover:text-blue-500 text-4xl"
+            className="cursor-pointer hover:text-blue-500 text-3xl md:text-4xl"
             onClick={() => closeAlertModal()}
           >
             ×

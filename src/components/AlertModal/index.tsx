@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { useAlertModalStore } from '../../store/useAlertModalStore';
+import { alertText } from './alertText';
 
 const AlertModal: FC = () => {
   const closeAlertModal = useAlertModalStore((state) => state.closeAlertModal);
@@ -26,24 +27,9 @@ const AlertModal: FC = () => {
           </button>
         </div>
         <div className="flex flex-col gap-2 text-justify">
-          <p>
-            В данном проекте используется бесплатный план{' '}
-            <span className="font-bold">CoinGecko API</span> для получения
-            данных криптовалют. В связи с использованием бесплатного плана{' '}
-            <span className="font-bold">
-              ограничено количество запросов в минуту к серверу
-            </span>{' '}
-            для получения этих данных.
-          </p>
-          <p>
-            Поэтому иногда может быть долгая загрузка данных и/или возникать
-            ошибка <span className="font-bold">Network Error</span>. Эта ошибка
-            возникает, если очень быстро менять криптовалюту для обзора.
-          </p>
-          <p>
-            Также, данные могут долго загружаться или не загрузиться вовсе на
-            территории России из-за замедления зарубежных сервисов.
-          </p>
+          {alertText.map(({ textId, text }) => (
+            <p key={textId}>{text}</p>
+          ))}
         </div>
         <div className="flex items-center justify-center">
           <button

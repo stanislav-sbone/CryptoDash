@@ -3,7 +3,7 @@ import CoinDetails from './components/CoinDetails';
 import CoinList from './components/CoinList';
 import Header from './components/Header';
 import { useAlertModalStore } from './store/useAlertModalStore';
-import AlertModal from './components/common/AlertModal';
+import AlertModal from './components/AlertModal';
 
 function App() {
   const queryClient = new QueryClient();

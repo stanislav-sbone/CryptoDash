@@ -63,3 +63,14 @@ html.dark .scrollbar-custom::-webkit-scrollbar-thumb {
     transform: translateY(0);
   }
 }
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

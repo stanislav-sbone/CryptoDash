@@ -8,6 +8,7 @@ import {
 import { useLanguageStore } from '../../store/useLanguageStore';
 import { translations } from '../../locales/translations';
 import { useThemeStore } from '../../store/useThemeStore';
+import { useAlertModalStore } from '../../store/useAlertModalStore';
 
 interface BurgerMenuProps {
   isMenuOpen: boolean;
@@ -24,6 +25,7 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
   const theme = useThemeStore((state) => state.theme);
   const setLang = useLanguageStore((state) => state.setLanguage);
   const setTheme = useThemeStore((state) => state.setTheme);
+  const openAlertModal = useAlertModalStore((state) => state.openAlertModal);
 
   const burgerMenuRef = useRef<HTMLDivElement>(null);
 
@@ -48,12 +50,17 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
     };
   }, [isMenuOpen, menuToggleRef, setIsMenuOpen]);
 
+  const handleOpenModal = () => {
+    openAlertModal();
+    setIsMenuOpen(false);
+  };
+
   return (
     <div
-      className={`sm:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute right-3 -bottom-42 z-999
+      className={`sm:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute right-3 -bottom-55 z-999
                    bg-[#f3f6fc] dark:bg-[#193568] 
                    border border-[#2a6eee] 
-                   rounded-lg animate-[slideDown_0.2s_ease-out]`}
+                   rounded-lg animate-[slideLeft_0.2s_ease-out]`}
       ref={burgerMenuRef}
     >
       <h4 className="px-3 py-2 font-bold border-b border-[#2a6eee] text-center text-black dark:text-white">
@@ -77,18 +84,26 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
       <h4 className="px-3 py-2 font-bold border-b border-[#2a6eee] text-center text-black dark:text-white">
         {translations[language].theme}
       </h4>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 border-b border-[#2a6eee]">
         <button
-          className={`text-center px-5 py-3 rounded-bl-lg ${theme === 'light' ? 'bg-[#c2ceec] dark:bg-[#2a6eee] font-medium' : ''} text-black dark:text-white`}
+          className={`text-center px-5 py-3 ${theme === 'light' ? 'bg-[#c2ceec] dark:bg-[#2a6eee] font-medium' : ''} text-black dark:text-white`}
           onClick={() => setTheme('light')}
         >
           {translations[language].light}
         </button>
         <button
-          className={`text-center px-5 py-3 rounded-br-lg ${theme === 'dark' ? 'bg-[#c2ceec] dark:bg-[#2a6eee] font-medium' : ''} text-black dark:text-white`}
+          className={`text-center px-5 py-3 ${theme === 'dark' ? 'bg-[#c2ceec] dark:bg-[#2a6eee] font-medium' : ''} text-black dark:text-white`}
           onClick={() => setTheme('dark')}
         >
           {translations[language].dark}
+        </button>
+      </div>
+      <div className="text-center">
+        <button
+          className={`px-5 py-3 text-center text-black dark:text-white font-medium`}
+          onClick={handleOpenModal}
+        >
+          FAQ
         </button>
       </div>
     </div>

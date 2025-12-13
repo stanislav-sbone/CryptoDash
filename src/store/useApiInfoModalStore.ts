@@ -6,7 +6,7 @@ interface ApiInfoModalStore {
   closeApiInfoModal: () => void;
 }
 
-export const useApiInfroModalStore = create<ApiInfoModalStore>((set) => ({
+export const useApiInfoModalStore = create<ApiInfoModalStore>((set) => ({
   isApiInfoModalOpen: false,
 
   openApiInfoModal: () => set({ isApiInfoModalOpen: true }),

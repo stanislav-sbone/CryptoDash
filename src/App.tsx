@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import CoinDetails from './components/CoinDetails';
 import CoinList from './components/CoinList';
@@ -8,6 +9,20 @@ import AlertModal from './components/AlertModal';
 function App() {
   const queryClient = new QueryClient();
   const isModalOpen = useAlertModalStore((state) => state.isAlertModalOpen);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+      return () => {
+        document.body.style.overflow = '';
+      };
+    }
+  }, [isModalOpen]);
 
   return (
     <QueryClientProvider client={queryClient}>

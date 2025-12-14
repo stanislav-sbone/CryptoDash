@@ -7,7 +7,7 @@ const AlertModal: FC = () => {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black/70 z-1000 text-black dark:text-gray-300"
+      className="fixed top-0 left-0 right-0 bottom-0 px-3 flex justify-center items-center bg-black/70 z-1000 text-black dark:text-gray-300"
       onClick={() => closeAlertModal()}
     >
       <div

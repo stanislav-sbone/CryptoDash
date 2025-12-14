@@ -9,6 +9,16 @@ import AlertModal from './components/AlertModal';
 function App() {
   const queryClient = new QueryClient();
   const isModalOpen = useAlertModalStore((state) => state.isAlertModalOpen);
+  const openAlertModal = useAlertModalStore((state) => state.openAlertModal);
+
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('firstAppearanceModal');
+
+    if (hasVisited === null) {
+      openAlertModal();
+      localStorage.setItem('firstAppearanceModal', 'false');
+    }
+  }, [openAlertModal]);
 
   useEffect(() => {
     if (isModalOpen) {

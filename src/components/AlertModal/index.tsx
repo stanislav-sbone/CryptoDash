@@ -1,9 +1,13 @@
 import type { FC } from 'react';
 import { useAlertModalStore } from '../../store/useAlertModalStore';
-import { alertText } from './alertText';
+import { useLanguageStore } from '../../store/useLanguageStore';
+import { getAlertText } from './alertText';
+import { translations } from '../../locales/translations';
 
 const AlertModal: FC = () => {
   const closeAlertModal = useAlertModalStore((state) => state.closeAlertModal);
+  const language = useLanguageStore((state) => state.language);
+  const alertText = getAlertText(language);
 
   return (
     <div
@@ -17,7 +21,7 @@ const AlertModal: FC = () => {
         <div className="flex justify-between text-2xl md:text-3xl">
           <div className="flex items-center gap-4">
             <img src="/assets/alert.png" alt="alert" className="w-10 md:w-12" />
-            <h3>Предупреждение</h3>
+            <h3>{translations[language].warning}</h3>
           </div>
           <button
             className="cursor-pointer hover:text-blue-500 text-3xl md:text-4xl"
@@ -36,7 +40,7 @@ const AlertModal: FC = () => {
             className="bg-blue-500 text-white font-medium rounded-md px-6 py-2 cursor-pointer hover:bg-blue-500/75 transition-all duration-300 ease-in-out"
             onClick={() => closeAlertModal()}
           >
-            Окей
+            {translations[language].ok}
           </button>
         </div>
       </div>

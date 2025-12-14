@@ -30,6 +30,8 @@ export const translations = {
     error: 'Ошибка загрузки данных',
     loading: 'Загрузка данных...',
     theme: 'Тема',
+    warning: 'Предупреждение',
+    ok: 'Окей',
   },
   en: {
     assets: 'Assets',
@@ -62,5 +64,7 @@ export const translations = {
     error: 'Error loading data',
     loading: 'Loading data...',
     theme: 'Theme',
+    warning: 'Warning',
+    ok: 'Okay',
   },
 };

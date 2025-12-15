@@ -10,6 +10,8 @@ import ListLabel from './ListLabel';
 import CoinCardSkeleton from './CoinCardSkeleton';
 import Error from '../common/Error';
 import { useFavoriteCoinsStore } from '../../store/useFavoriteCoinsStore';
+import ListTabs from './ListTabs';
+import EmptyFavorites from './EmptyFavorites';
 
 const CoinList: FC = () => {
   const [activeTab, setActiveTab] = useState<'all' | 'favorites'>('all');
@@ -101,27 +103,14 @@ const CoinList: FC = () => {
       <div className="shrink-0">
         <ListHeader />
         <CoinFilter />
-        <div className="flex items-center gap-5 py-2 px-4 border-b-2 border-b-blue-500">
-          <button
-            className={`text-[20px] font-medium cursor-pointer hover:text-blue-500 ${activeTab === 'all' ? 'text-blue-500 underline underline-offset-2' : ''}`}
-            onClick={() => setActiveTab('all')}
-          >
-            All
-          </button>
-          <button
-            className={`text-[20px] font-medium cursor-pointer hover:text-blue-500 ${activeTab === 'favorites' ? 'text-blue-500 underline underline-offset-2' : ''}`}
-            onClick={() => setActiveTab('favorites')}
-          >
-            Favorites
-          </button>
-        </div>
+        <ListTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         {coinsToRender.length > 0 && <ListLabel />}
       </div>
 
       <div className="flex-1 min-h-0 overflow-y-auto scrollbar-custom">
         <div className="flex flex-col">
           {showEmptyFavorites ? (
-            <div>List of favorite coins is empty</div>
+            <EmptyFavorites />
           ) : coinsToRender.length > 0 ? (
             coinsToRender.map((coin) => (
               <CoinCard

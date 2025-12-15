@@ -32,6 +32,9 @@ export const translations = {
     theme: 'Тема',
     warning: 'Предупреждение',
     ok: 'Окей',
+    all: 'Все',
+    favorites: 'Избранные',
+    emptyFavorites: 'Список избранных криптовалют пуст',
   },
   en: {
     assets: 'Assets',
@@ -66,5 +69,8 @@ export const translations = {
     theme: 'Theme',
     warning: 'Warning',
     ok: 'Okay',
+    all: 'All',
+    favorites: 'Favorites',
+    emptyFavorites: 'List of favorite coins is empty',
   },
 };

@@ -33,7 +33,7 @@ export const translations = {
     warning: 'Предупреждение',
     ok: 'Окей',
     all: 'Все',
-    favorites: 'Избранные',
+    favorites: 'Избранное',
     emptyFavorites: 'Список избранных криптовалют пуст',
   },
   en: {

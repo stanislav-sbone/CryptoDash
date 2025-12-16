@@ -40,12 +40,12 @@ const CoinCard: FC<ICoin> = ({
 
   return (
     <div
-      className="group flex items-center gap-5 font-medium px-4 py-3 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-500 dark:hover:bg-[#27509c]"
+      className="group grid grid-cols-[50px_1fr_auto_50px] md:grid-cols-[70px_1fr_auto_50px] items-center font-medium px-4 py-3 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-500 dark:hover:bg-[#27509c]"
       onClick={() => setCoin(id)}
     >
-      <img src={image} alt={symbol} className="w-12 h-12" />
+      <img src={image} alt={symbol} className="w-8 h-8 md:w-12 md:h-12" />
       <div>
-        <h3 className="text-[16px] tracking-wider text-black dark:text-white">
+        <h3 className="text-[14px] md:text-[18px] tracking-wider text-black dark:text-white">
           <span>{name}</span>
           <span className="text-gray-700 dark:text-gray-400 tracking-tight ml-2">
             {symbol.toUpperCase()}
@@ -64,7 +64,7 @@ const CoinCard: FC<ICoin> = ({
         </span>
       </div>
       <button
-        className={`${isFavorite ? 'lg:opacity-100' : 'lg:opacity-0'} cursor-pointer p-1 transition-all duration-200 group-hover:scale-120 group-hover:opacity-100`}
+        className={`${isFavorite ? 'lg:opacity-100' : 'lg:opacity-0'} cursor-pointer p-1 transition-all duration-200 group-hover:scale-120 group-hover:opacity-100 justify-self-end`}
         onClick={(event) => handleFavoriteClick(event)}
       >
         <svg
